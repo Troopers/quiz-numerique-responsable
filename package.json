@@ -1,5 +1,5 @@
 {
-  "name": "quizz",
+  "name": "quiz-numerique-responsable",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.1.0",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@styled-system/css": "^5.1.5",
     "framer-motion": "^6",
     "next": "12.1.6",
     "react": "18.1.0",
