@@ -15,11 +15,12 @@ node_modules: yarn.lock ## Install Node dependencies
 ## Project
 ## -------
 ##
-run: start ## Run the project
+dev: start node_modules ## Run the project (dev)
 	$(YARN) dev
 
-yarn-build: start ## Build the project
+prod: start node_modules ## Run the project (prod)
 	$(YARN) build
+	$(YARN) start
 
 install: start node_modules run  ## Install everything
 
