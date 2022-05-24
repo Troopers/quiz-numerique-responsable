@@ -1,7 +1,7 @@
 import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
-import StratosfairLogo from "../../assets/images/stratosfair-logo.png";
-import TroopersLogo from "../../assets/images/Troopers-logo.png";
+import StratosfairLogo from "../../public/images/Stratosfair-logo.png";
+import TroopersLogo from "../../public/images/Troopers-logo.png";
 
 export const Header = () => {
   return (
