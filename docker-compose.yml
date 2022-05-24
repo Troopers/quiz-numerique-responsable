@@ -1,0 +1,11 @@
+version: '3.2'
+
+services:
+  front:
+    build:
+      context: .docker/front
+    working_dir: /srv
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/srv/:cached
