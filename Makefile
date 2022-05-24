@@ -18,6 +18,9 @@ node_modules: yarn.lock ## Install Node dependencies
 run: start ## Run the project
 	$(YARN) dev
 
+yarn-build: start ## Build the project
+	$(YARN) build
+
 install: start node_modules run  ## Install everything
 
 reset: kill clean install ## Reset everything
