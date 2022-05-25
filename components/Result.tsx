@@ -1,9 +1,8 @@
 import { LinkIcon } from "@chakra-ui/icons";
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, useToast } from "@chakra-ui/react";
 import { FC } from "react";
 import { CenterBlock } from "./Core/CenterBlock";
 import { UnderlineWord } from "./Core/UnderlineWord";
-import { Footer } from "./Footer";
 
 interface ResultProps {
   score: number;
@@ -11,8 +10,10 @@ interface ResultProps {
 }
 
 export const Result: FC<ResultProps> = ({ score, code }) => {
+  const toast = useToast();
+
   const percentScore = (score / 15) * 100;
-  const isQuizzValidated = percentScore > 50;
+  const isQuizzValidated = percentScore > 80;
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
@@ -22,27 +23,44 @@ export const Result: FC<ResultProps> = ({ score, code }) => {
 
   const handleCopy = () => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+      toast({
+        title: "Identifiant copié",
+        status: "success",
+        duration: 1000,
+        isClosable: true,
+      });
       return navigator.clipboard.writeText(code);
     }
     return Promise.reject("The Clipboard API is not available.");
   };
 
   return (
-    <Box>
+    <Box marginTop={6}>
       <Heading as="h1" size="4xl" textAlign="center" width={"100%"}>
         <UnderlineWord>{textsDisplayed.header}</UnderlineWord>
       </Heading>
-      <CenterBlock gap={2}>
+      <CenterBlock flexProps={{ marginTop: 2 }} gap={1}>
         <Text>Tu as obtenu</Text>
         <Heading as="p" size="2xl" textAlign="center">
-          {percentScore} % de bonnes réponses
+          <Box as="span" color="green.500">
+            {Math.round(percentScore)}%
+          </Box>{" "}
+          de bonnes réponses
         </Heading>
       </CenterBlock>
-      <CenterBlock gap={2}>
-        <Text>Copie ton identifiant</Text>
-        <Button leftIcon={<LinkIcon />} variant="outline" onClick={handleCopy}>
-          {code}
-        </Button>
+      {isQuizzValidated && (
+        <CenterBlock gap={1} flexProps={{ paddingTop: 4, paddingBottom: 4 }}>
+          <Text>Copie ton identifiant</Text>
+          <Button
+            leftIcon={<LinkIcon />}
+            variant="outline"
+            onClick={handleCopy}
+          >
+            {code}
+          </Button>
+        </CenterBlock>
+      )}
+      <CenterBlock gap={1} flexProps={{ paddingTop: 4, paddingBottom: 4 }}>
         <Text fontWeight="bold" textAlign="center">
           {textsDisplayed.details}
         </Text>
