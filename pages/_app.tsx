@@ -9,6 +9,9 @@ const theme = extendTheme({
       },
     },
   },
+  shadows: {
+    outline: "0 0 0 3px rgba(56, 161, 105, 0.6)",
+  },
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

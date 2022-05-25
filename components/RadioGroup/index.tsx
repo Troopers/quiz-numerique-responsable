@@ -1,26 +1,33 @@
 import { Flex, useRadioGroup } from "@chakra-ui/react";
 import { FC } from "react";
+import { useAnswers } from "../../contexts/AnswersContext";
+import { Answer } from "../../types/types";
 import { RadioCard } from "./RadioCard";
 
 interface RadioGroupProps {
-  options: string[];
+  options: Answer[];
+  question_id: string;
 }
 
-export const RadioGroup: FC<RadioGroupProps> = ({ options }) => {
+export const RadioGroup: FC<RadioGroupProps> = ({ options, question_id }) => {
+  const { updateAnswers } = useAnswers();
+
   const { getRootProps, getRadioProps } = useRadioGroup({
-    // name: "",
-    onChange: console.log,
+    name: `question-${question_id}`,
+    onChange: (value) => updateAnswers && updateAnswers(question_id, value),
   });
 
   const group = getRootProps();
 
   return (
     <Flex {...group} gap={2} wrap="wrap" justify="center">
-      {options.map((value: string) => {
-        const radio = getRadioProps({ value });
+      {options.map(({ id, name }) => {
+        const radio = getRadioProps({
+          value: id.toString(),
+        });
         return (
-          <RadioCard key={value} {...radio}>
-            {value}
+          <RadioCard key={id} {...radio}>
+            {name}
           </RadioCard>
         );
       })}
