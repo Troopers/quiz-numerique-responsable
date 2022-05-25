@@ -1,42 +1,40 @@
+import { Spinner } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { Layout } from "../components/Core/Layout";
-import { QuestionCard } from "../components/QuestionCard";
+import SliderQuizz from "../components/SliderQuizz";
+import { AnswersProvider } from "../contexts/AnswersContext";
+import { QuestionType } from "../types/types";
 
-interface QuestionType {
-  title: string;
-  options: string[];
-  companyNameInfo?: string;
+interface QuizzProps {
+  questions: QuestionType[];
 }
 
-const Quizz: NextPage = () => {
-  // Waiting call Api
-  const questions: QuestionType[] = [
-    {
-      title:
-        "Entre 2010 et 2020, le poids moyen d’une page web à été mutliplié par :",
-      options: ["x2", "x10", "x4"],
-      companyNameInfo: "Stratosfair",
-    },
-    {
-      title:
-        "Quelle est la quantité de matière première nécessaire pour fabriquer un smartphone de 200g ?",
-      options: ["20kg", "200kg", "2kg"],
-    },
-    {
-      title:
-        "Quel est le pourcentage de femmes dans les métiers du numérique ?",
-      options: ["30%", "40%", "Longue réponse"],
-      companyNameInfo: "Troopers",
-    },
-  ];
+const Quizz: NextPage<QuizzProps> = ({ questions }) => {
+  if (!questions) {
+    return (
+      <Layout>
+        <Spinner />
+      </Layout>
+    );
+  }
 
   return (
-    <Layout>
-      {questions.map((question, i) => (
-        <QuestionCard key={i} {...question} number={i + 1} />
-      ))}
-    </Layout>
+    <AnswersProvider>
+      <Layout>
+        <SliderQuizz questions={questions} />
+      </Layout>
+    </AnswersProvider>
   );
 };
+
+export async function getStaticProps() {
+  const { API_URL } = process.env;
+  const res = await fetch(`${API_URL}/questions`);
+  const questions = await res.json();
+
+  return {
+    props: { questions },
+  };
+}
 
 export default Quizz;
