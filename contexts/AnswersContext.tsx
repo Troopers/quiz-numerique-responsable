@@ -19,8 +19,6 @@ export const AnswersProvider: FC<{
 }> = ({ children }) => {
   const [answers, setAnswers] = useState<AnswerChoosed[]>([]);
 
-  console.log(answers);
-
   const updateAnswersAlreadyInQuestion = (
     question_id: string,
     answer_id: string
