@@ -1,21 +1,24 @@
 import { Box, Tag, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import { Answer } from "../types/types";
 import { CompanyInfo } from "./CompanyInfo";
 import { CenterBlock } from "./Core/CenterBlock";
 import { RadioGroup } from "./RadioGroup";
 
 interface QuestionCardProps {
+  id: string;
   number: number;
-  title: string;
-  options: string[];
-  companyNameInfo?: string;
+  name: string;
+  answers: Answer[];
+  company?: string;
 }
 
 export const QuestionCard: FC<QuestionCardProps> = ({
+  id,
   number,
-  title,
-  options,
-  companyNameInfo,
+  name,
+  answers,
+  company,
 }) => {
   return (
     <Box border="1px" borderColor="green.900" p={30} borderRadius={20}>
@@ -24,11 +27,10 @@ export const QuestionCard: FC<QuestionCardProps> = ({
           Question {number}/15
         </Tag>
         <Text fontSize="2xl" fontWeight="bold" align="center">
-          {title}
+          {name}
         </Text>
-        <RadioGroup options={options} />
-        {companyNameInfo &&
-          ((<CompanyInfo companyNameInfo={companyNameInfo} />) as any)}
+        <RadioGroup options={answers} question_id={id} />
+        <>{!!company && <CompanyInfo company={company} />}</>
       </CenterBlock>
     </Box>
   );
