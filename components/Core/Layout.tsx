@@ -7,7 +7,7 @@ export const Layout: FC<{ children: ReactElement[] | ReactElement }> = ({
   children,
 }) => {
   return (
-    <Container height="100%">
+    <Container height="90vh" position="relative">
       <Header />
       <CenterBlock>{children}</CenterBlock>
     </Container>

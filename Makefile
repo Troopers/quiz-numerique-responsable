@@ -52,7 +52,7 @@ stop: ## Stop the project
 restart: stop start ## Restart the project
 
 shell: ## Enter in web container
-	$(EXEC_FRONT) sh
+    $(DOCKER_COMPOSE) exec front /entrypoint sh
 
 .DEFAULT_GOAL := help
 help:

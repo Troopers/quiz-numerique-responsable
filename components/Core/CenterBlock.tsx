@@ -12,9 +12,9 @@ export const CenterBlock: FC<{
       align="center"
       justify="space-between"
       height="100%"
-      py={5}
+      py={1}
       {...flexProps}
-      gap={gap || "70px"}
+      gap={gap || "40px"}
     >
       {children}
     </Flex>

@@ -1,17 +1,17 @@
 import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
-import StratosfairLogo from "../../public/images/Stratosfair-logo.png";
-import TroopersLogo from "../../public/images/Troopers-logo.png";
+import GrainesdiciLogo from "../../public/images/Graines d'ici-logo.webp";
+import TroopersLogo from "../../public/images/Troopers-logo.webp";
 
 export const Header = () => {
   return (
-    <Flex p={5} align="center">
+    <Flex p={2} align="center">
       <Box>
         <Image src={TroopersLogo} alt="Troopers Logo" />
       </Box>
       <Spacer />
       <Box>
-        <Image src={StratosfairLogo} alt="Stratosfair Logo" />
+        <Image src={GrainesdiciLogo} alt="Grainesdici Logo" />
       </Box>
     </Flex>
   );

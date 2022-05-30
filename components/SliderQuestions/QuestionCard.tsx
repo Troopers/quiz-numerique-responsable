@@ -1,9 +1,9 @@
 import { Box, Tag, Text } from "@chakra-ui/react";
 import { FC } from "react";
-import { Answer } from "../types/types";
-import { CompanyInfo } from "./CompanyInfo";
-import { CenterBlock } from "./Core/CenterBlock";
-import { RadioGroup } from "./RadioGroup";
+import { Answer, AnswerChoosed } from "../../types/types";
+import { CompanyInfo } from "../CompanyInfo";
+import { CenterBlock } from "../Core/CenterBlock";
+import { RadioGroup } from "../RadioGroup";
 
 interface QuestionCardProps {
   id: string;
@@ -11,6 +11,8 @@ interface QuestionCardProps {
   name: string;
   answers: Answer[];
   company?: string;
+  nbQuestions: number;
+  defaultAnswer?: AnswerChoosed;
 }
 
 export const QuestionCard: FC<QuestionCardProps> = ({
@@ -19,17 +21,23 @@ export const QuestionCard: FC<QuestionCardProps> = ({
   name,
   answers,
   company,
+  nbQuestions,
+  defaultAnswer,
 }) => {
   return (
-    <Box border="1px" borderColor="green.900" p={30} borderRadius={20}>
-      <CenterBlock gap={10}>
+    <Box border="1px" borderColor="green.900" p={5} borderRadius={20}>
+      <CenterBlock gap={3}>
         <Tag bg="green.900" color="white">
-          Question {number}/15
+          Question {number}/{nbQuestions}
         </Tag>
         <Text fontSize="2xl" fontWeight="bold" align="center">
           {name}
         </Text>
-        <RadioGroup options={answers} question_id={id} />
+        <RadioGroup
+          options={answers}
+          question_id={id}
+          defaultAnswer={defaultAnswer}
+        />
         <>{!!company && <CompanyInfo company={company} />}</>
       </CenterBlock>
     </Box>
