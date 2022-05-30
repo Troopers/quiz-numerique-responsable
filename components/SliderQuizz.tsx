@@ -5,6 +5,7 @@ import { QuestionCard } from "./QuestionCard";
 import { CheckIcon } from "@chakra-ui/icons";
 import { useAnswers } from "../contexts/AnswersContext";
 import { Response } from "../pages/api/quizz";
+import Router from "next/router";
 
 interface SliderQuizzProps {
   questions: QuestionType[];
@@ -14,7 +15,6 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
   const { answers } = useAnswers();
 
   const [response, setResponse] = useState<Response>();
-
   const submitAnswers = async () => {
     const formatedAnswers = answers?.map(({ question_id, answer_id }) => {
       return { question: question_id, answer: answer_id };
@@ -26,10 +26,20 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
     });
 
     const data = await response.json();
-    console.log("data", data);
     setResponse(data);
+    const { code, score } = data;
 
-    // Missing redirect to result page (coucou Vincent)
+    Router.push(
+      {
+        pathname: "results",
+        query: {
+          code,
+          score,
+          questionNumber: questions?.length,
+        },
+      },
+      "/results"
+    );
   };
 
   return (
@@ -37,8 +47,6 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
       {questions.map((question, i) => (
         <QuestionCard key={i} {...question} number={i + 1} />
       ))}
-
-      {/* Waiting Vincent */}
       {!!response && (
         <p>
           Tu as eu {response?.score} bonnes reponses et ton id est :{" "}
