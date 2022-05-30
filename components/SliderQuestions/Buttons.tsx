@@ -4,7 +4,7 @@ import {
   ArrowUpIcon,
   CheckIcon,
 } from "@chakra-ui/icons";
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import Router from "next/router";
 import { FC, MouseEventHandler } from "react";
 import { useAnswers } from "../../contexts/AnswersContext";
@@ -51,46 +51,44 @@ const Buttons: FC<ButtonsProps> = ({
 
   return (
     <>
-      <Box pos="absolute" bottom="0" left="0" w="100%" p={5}>
-        <Flex justify="space-between" w="100%">
+      <Flex justify="space-between" w="100%">
+        <Button
+          colorScheme="green"
+          color="green.900"
+          size="md"
+          borderRadius={50}
+          onClick={prevQuestion}
+          leftIcon={isFirstQuestion ? <ArrowBackIcon /> : <ArrowUpIcon />}
+          variant="outline"
+        >
+          {isFirstQuestion ? "Retour" : "Précédent"}
+        </Button>
+
+        {isLastQuestion ? (
           <Button
             colorScheme="green"
-            color="green.900"
+            bg="green.900"
             size="md"
             borderRadius={50}
-            onClick={prevQuestion}
-            leftIcon={isFirstQuestion ? <ArrowBackIcon /> : <ArrowUpIcon />}
-            variant="outline"
+            onClick={submitAnswers}
+            leftIcon={<CheckIcon />}
           >
-            {isFirstQuestion ? "Retour" : "Précédent"}
+            Valider
           </Button>
-
-          {isLastQuestion ? (
-            <Button
-              colorScheme="green"
-              bg="green.900"
-              size="md"
-              borderRadius={50}
-              onClick={submitAnswers}
-              leftIcon={<CheckIcon />}
-            >
-              Valider
-            </Button>
-          ) : (
-            <Button
-              colorScheme="green"
-              bg="green.900"
-              size="md"
-              borderRadius={50}
-              onClick={nextQuestion}
-              leftIcon={<ArrowDownIcon />}
-              disabled={!questionIsResponded}
-            >
-              Suivant
-            </Button>
-          )}
-        </Flex>
-      </Box>
+        ) : (
+          <Button
+            colorScheme="green"
+            bg="green.900"
+            size="md"
+            borderRadius={50}
+            onClick={nextQuestion}
+            leftIcon={<ArrowDownIcon />}
+            disabled={!questionIsResponded}
+          >
+            Suivant
+          </Button>
+        )}
+      </Flex>
     </>
   );
 };

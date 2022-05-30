@@ -18,7 +18,7 @@ export const CompanyInfo: FC<CompanyInfoProps> = ({ company }) => {
       {companyNames.includes(company) && (
         <Box pos="relative" w="100px" h="50px" mt={4} mx="auto">
           <Image
-            src={`/images/${company}-logo.webp`}
+            src={`/images/${company}-logo.png`}
             alt={`${company} Logo`}
             layout="fill"
             objectFit="contain"

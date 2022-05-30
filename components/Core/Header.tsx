@@ -1,11 +1,11 @@
 import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
-import GrainesdiciLogo from "../../public/images/Graines d'ici-logo.webp";
-import TroopersLogo from "../../public/images/Troopers-logo.webp";
+import GrainesdiciLogo from "../../public/images/Graines d'ici-logo.png";
+import TroopersLogo from "../../public/images/Troopers-logo.png";
 
 export const Header = () => {
   return (
-    <Flex p={2} align="center">
+    <Flex px={5} align="center" justify="space-between" w="100%">
       <Box>
         <Image src={TroopersLogo} alt="Troopers Logo" />
       </Box>

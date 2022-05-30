@@ -30,7 +30,7 @@ export const QuestionCard: FC<QuestionCardProps> = ({
         <Tag bg="green.900" color="white">
           Question {number}/{nbQuestions}
         </Tag>
-        <Text fontSize="2xl" fontWeight="bold" align="center">
+        <Text fontSize="xl" fontWeight="bold" align="center">
           {name}
         </Text>
         <RadioGroup

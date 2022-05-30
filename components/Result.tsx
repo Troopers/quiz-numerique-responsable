@@ -1,5 +1,6 @@
 import { LinkIcon } from "@chakra-ui/icons";
 import { Box, Button, Heading, Text, useToast } from "@chakra-ui/react";
+import Router from "next/router";
 import { FC } from "react";
 import { CenterBlock } from "./Core/CenterBlock";
 import { UnderlineWord } from "./Core/UnderlineWord";
@@ -44,7 +45,7 @@ export const Result: FC<ResultProps> = ({
       <Heading as="h1" size="4xl" textAlign="center" width={"100%"}>
         <UnderlineWord>{textsDisplayed.header}</UnderlineWord>
       </Heading>
-      <CenterBlock flexProps={{ marginTop: 2 }} gap={1}>
+      <CenterBlock flexProps={{ marginTop: 2 }} gap={5}>
         <Text>Tu as obtenu</Text>
         <Heading as="p" size="2xl" textAlign="center">
           <Box as="span" color="green.500">
@@ -52,23 +53,37 @@ export const Result: FC<ResultProps> = ({
           </Box>{" "}
           de bonnes réponses
         </Heading>
-      </CenterBlock>
-      {isQuizzValidated && (
-        <CenterBlock gap={1} flexProps={{ paddingTop: 4, paddingBottom: 4 }}>
-          <Text>Copie ton identifiant</Text>
-          <Button
-            leftIcon={<LinkIcon />}
-            variant="outline"
-            onClick={handleCopy}
-          >
-            {code}
-          </Button>
-        </CenterBlock>
-      )}
-      <CenterBlock gap={1} flexProps={{ paddingTop: 4, paddingBottom: 4 }}>
+
+        <>
+          {isQuizzValidated && (
+            <CenterBlock
+              gap={5}
+              flexProps={{ paddingTop: 4, paddingBottom: 4 }}
+            >
+              <Text>Copie ton identifiant</Text>
+              <Button
+                leftIcon={<LinkIcon />}
+                variant="outline"
+                onClick={handleCopy}
+              >
+                {code}
+              </Button>
+            </CenterBlock>
+          )}
+        </>
         <Text fontWeight="bold" textAlign="center">
           {textsDisplayed.details}
         </Text>
+        <Button
+          colorScheme="green"
+          bg="green.900"
+          size="lg"
+          borderRadius={50}
+          onClick={() => Router.push("/")}
+          py={5}
+        >
+          Recommencer
+        </Button>
       </CenterBlock>
     </Box>
   );

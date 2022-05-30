@@ -1,7 +1,6 @@
+import Router from "next/router";
 import { FC, useState } from "react";
 import { useAnswers } from "../contexts/AnswersContext";
-import { Response } from "../pages/api/quizz";
-import Router from "next/router";
 import { QuestionType } from "../types/types";
 import SliderQuestions from "./SliderQuestions";
 import Buttons from "./SliderQuestions/Buttons";
@@ -13,7 +12,6 @@ interface SliderQuizzProps {
 const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
   const { answers } = useAnswers();
 
-  const [response, setResponse] = useState<Response>();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
 
   const submitAnswers = async () => {
@@ -27,7 +25,6 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
     });
 
     const data = await response.json();
-    setResponse(data);
     const { code, score } = data;
 
     Router.push(
@@ -55,14 +52,6 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
         setCurrentQuestionIndex={setCurrentQuestionIndex}
         submitAnswers={submitAnswers}
       />
-
-      {/* Waiting Vincent */}
-      {!!response && (
-        <p>
-          Tu as eu {response?.score} bonnes reponses et ton id est :{" "}
-          {response?.code}
-        </p>
-      )}
     </>
   );
 };
