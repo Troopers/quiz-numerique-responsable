@@ -7,12 +7,16 @@ import { UnderlineWord } from "./Core/UnderlineWord";
 interface ResultProps {
   score: number;
   code: string;
+  questionNumber: number;
 }
 
-export const Result: FC<ResultProps> = ({ score, code }) => {
+export const Result: FC<ResultProps> = ({
+  score,
+  code,
+  questionNumber = 10,
+}) => {
   const toast = useToast();
-
-  const percentScore = (score / 15) * 100;
+  const percentScore = (score / questionNumber) * 100;
   const isQuizzValidated = percentScore > 80;
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",

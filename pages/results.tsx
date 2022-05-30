@@ -22,6 +22,7 @@ const Results: NextPage = ({}) => {
           <Result
             score={parseInt(query.score as string)}
             code={query.code as string}
+            questionNumber={parseInt(query.questionNumber as string)}
           />
         </Layout>
       ) : null}

@@ -35,6 +35,7 @@ const SliderQuizz: FC<SliderQuizzProps> = ({ questions }) => {
         query: {
           code,
           score,
+          questionNumber: questions?.length,
         },
       },
       "/results"
