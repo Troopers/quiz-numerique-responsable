@@ -17,7 +17,7 @@ const Results: NextPage = ({}) => {
 
   return (
     <Flex flexDirection="column" justify="space-between">
-      {query?.score && query?.code ? (
+      {query?.score && query?.code && (
         <Layout>
           <Result
             score={parseInt(query.score as string)}
@@ -25,7 +25,7 @@ const Results: NextPage = ({}) => {
             questionNumber={parseInt(query.questionNumber as string)}
           />
         </Layout>
-      ) : null}
+      )}
       <Footer />
     </Flex>
   );

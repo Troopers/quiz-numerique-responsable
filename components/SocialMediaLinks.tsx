@@ -7,30 +7,38 @@ interface SocialMediaLinksProps {
   variant: "grainesdici" | "troopers";
 }
 
-export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
-  const media =
-    variant === "troopers"
-      ? {
-          linkedIn: {
-            name: "Troopers",
-            link: "https://fr.linkedin.com/company/troopers-agency",
-          },
-          twitter: {
-            name: "@Troopersagency",
-            link: "https://twitter.com/troopersagency",
-          },
-        }
-      : {
-          linkedIn: {
-            name: "Graines d'ici",
-            link: "https://fr.linkedin.com/company/graines-d-ici",
-          },
-          twitter: {
-            name: "@grainesdici",
-            link: "https://twitter.com/grainesdici",
-          },
-        };
+const mediaList: {
+  [key: string]: {
+    [key: string]: {
+      name: string;
+      link: string;
+    };
+  };
+} = {
+  troopers: {
+    linkedIn: {
+      name: "Troopers",
+      link: "https://fr.linkedin.com/company/troopers-agency",
+    },
+    twitter: {
+      name: "@Troopersagency",
+      link: "https://twitter.com/troopersagency",
+    },
+  },
+  grainesdici: {
+    linkedIn: {
+      name: "Graines d'ici",
+      link: "https://fr.linkedin.com/company/graines-d-ici",
+    },
+    twitter: {
+      name: "@grainesdici",
+      link: "https://twitter.com/grainesdici",
+    },
+  },
+};
 
+export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
+  const media = mediaList[variant];
   return (
     <Flex width="100%" flexDirection="row" justifyContent="center">
       <Flex flexDirection="column">

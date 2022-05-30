@@ -16,8 +16,9 @@ export const Result: FC<ResultProps> = ({
   questionNumber = 10,
 }) => {
   const toast = useToast();
+  const validationScore: number = 80;
   const percentScore = (score / questionNumber) * 100;
-  const isQuizzValidated = percentScore > 80;
+  const isQuizzValidated = percentScore > validationScore;
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
