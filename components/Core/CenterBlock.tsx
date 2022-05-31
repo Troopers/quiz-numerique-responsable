@@ -10,11 +10,10 @@ export const CenterBlock: FC<{
     <Flex
       direction="column"
       align="center"
-      justify="space-between"
-      height="100%"
-      py={5}
+      justify="space-around"
+      py={1}
       {...flexProps}
-      gap={gap || "70px"}
+      gap={gap || "40px"}
     >
       {children}
     </Flex>
