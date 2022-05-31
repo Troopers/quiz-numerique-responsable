@@ -23,8 +23,8 @@ export const Result: FC<ResultProps> = ({
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
-      ? "Et rends toi vendredi soir sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
-      : "Rends toi sur le marché de l’impact pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable.",
+      ? "Copie ton identifiant et rends-toi vendredi soir sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
+      : "Rends-toi sur le marché de l’impact pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable.",
     shareMyResult: `#QuizNumeriqueResponsable #Web2Day2022
     Mon score : ${score}/${questionNumber}
     Toi aussi tente de gagner une corbeille de fruits avec Graines d'ici et Troopers !
@@ -59,13 +59,15 @@ export const Result: FC<ResultProps> = ({
         <UnderlineWord>{textsDisplayed.header}</UnderlineWord>
       </Heading>
       <CenterBlock flexProps={{ marginTop: 2 }} gap={5}>
-        <Text>Tu as obtenu</Text>
-        <Heading as="p" size="2xl" textAlign="center">
-          <Box as="span" color="green.500">
-            {Math.round(percentScore)}%
-          </Box>{" "}
-          de bonnes réponses
-        </Heading>
+        <Text as="span" align="center">
+          Tu as obtenu
+          <Heading as="p" size="2xl" textAlign="center">
+            <Box as="span" color="green.500">
+              {Math.round(percentScore)}%
+            </Box>{" "}
+            de bonnes réponses
+          </Heading>
+        </Text>
 
         <>
           {isQuizzValidated && (

@@ -14,6 +14,7 @@ const mediaList: {
     name: string;
     link: string;
     icon: ReactElement;
+    media: string;
   }[];
 } = {
   troopers: [
@@ -21,11 +22,13 @@ const mediaList: {
       name: "Troopers",
       link: "https://fr.linkedin.com/company/troopers-agency",
       icon: <LinkedInIcon />,
+      media: "Linkedin",
     },
     {
       name: "@Troopersagency",
       link: "https://twitter.com/troopersagency",
       icon: <TwitterIcon />,
+      media: "Twitter",
     },
   ],
   grainesdici: [
@@ -33,22 +36,30 @@ const mediaList: {
       name: "@grainesdici",
       link: "https://www.facebook.com/grainesdici/",
       icon: <FacebookIcon />,
+      media: "Facebook",
     },
     {
       name: "grainesdici.fr",
       link: "https://www.grainesdici.fr/",
       icon: <WebsiteIcon />,
+      media: "Site Web",
     },
   ],
 };
 
 export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
-  const media = mediaList[variant];
+  const medias = mediaList[variant];
   return (
     <Flex width="100%" flexDirection="row" justifyContent="center">
       <Flex flexDirection="column">
-        {media.map((m) => (
-          <Box display="flex" alignItems="center" _last={{ marginTop: "16px" }}>
+        {medias.map((m, i) => (
+          <Box
+            display="flex"
+            alignItems="center"
+            _last={{ marginTop: "16px" }}
+            aria-label={`${m.media} ${m.name}`}
+            key={i}
+          >
             {m.icon}
             <Link marginLeft={2} href={m.link}>
               {m.name}

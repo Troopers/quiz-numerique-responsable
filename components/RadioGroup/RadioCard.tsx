@@ -8,7 +8,7 @@ export const RadioCard: FC<UseRadioProps & { children: string }> = (props) => {
   const checkbox = getCheckboxProps();
 
   return (
-    <Box as="label">
+    <Box as="label" aria-label={props.children}>
       <input {...input} />
       <Box
         {...checkbox}

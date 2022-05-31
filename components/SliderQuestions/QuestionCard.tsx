@@ -27,7 +27,11 @@ export const QuestionCard: FC<QuestionCardProps> = ({
   return (
     <Box border="1px" borderColor="green.900" p={5} borderRadius={20}>
       <CenterBlock gap={3}>
-        <Tag bg="green.900" color="white">
+        <Tag
+          bg="green.900"
+          color="white"
+          aria-label={`Question ${number} sur ${nbQuestions}`}
+        >
           Question {number}/{nbQuestions}
         </Tag>
         <Text fontSize="xl" fontWeight="bold" align="center">

@@ -5,7 +5,7 @@ import TroopersLogo from "../../public/images/Troopers-logo.png";
 
 export const Header = () => {
   return (
-    <Flex px={5} align="center" justify="space-between" w="100%">
+    <Flex as="header" px={5} align="center" justify="space-between" w="100%">
       <Box>
         <Image src={TroopersLogo} alt="Troopers Logo" />
       </Box>
