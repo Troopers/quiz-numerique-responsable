@@ -41,8 +41,16 @@ export const Result: FC<ResultProps> = ({
         position: "top",
       });
       return navigator.clipboard.writeText(textToCopy);
+    } else {
+      toast({
+        title: "L'accès au presse-papier n'est pas supporté sur ce navigateur",
+        status: "error",
+        duration: 1000,
+        isClosable: true,
+        position: "top",
+      });
+      return Promise.reject("The Clipboard API is not available.");
     }
-    return Promise.reject("The Clipboard API is not available.");
   };
 
   return (
