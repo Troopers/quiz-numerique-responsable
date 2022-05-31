@@ -47,18 +47,14 @@ export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
   return (
     <Flex width="100%" flexDirection="row" justifyContent="center">
       <Flex flexDirection="column">
-        <Box display="flex" alignItems="center">
-          {media[0].icon}
-          <Link marginLeft={2} href={media[0].link}>
-            {media[0].name}
-          </Link>
-        </Box>
-        <Box display="flex" alignItems="center" marginTop="16px">
-          {media[1].icon}
-          <Link marginLeft={2} href={media[1].link}>
-            {media[1].name}
-          </Link>
-        </Box>
+        {media.map((m) => (
+          <Box display="flex" alignItems="center" _last={{ marginTop: "16px" }}>
+            {m.icon}
+            <Link marginLeft={2} href={m.link}>
+              {m.name}
+            </Link>
+          </Box>
+        ))}
       </Flex>
     </Flex>
   );
