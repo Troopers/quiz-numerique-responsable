@@ -7,6 +7,7 @@ interface FooterProps {}
 export const Footer: FC<FooterProps> = () => {
   return (
     <Container
+      as="footer"
       padding={5}
       flexDirection="row"
       display="flex"

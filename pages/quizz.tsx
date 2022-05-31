@@ -12,7 +12,7 @@ interface QuizzProps {
 const Quizz: NextPage<QuizzProps> = ({ questions }) => {
   if (!questions) {
     return (
-      <Layout>
+      <Layout title="Le quiz du numérique responsable - Quiz">
         <Spinner />
       </Layout>
     );
@@ -20,7 +20,7 @@ const Quizz: NextPage<QuizzProps> = ({ questions }) => {
 
   return (
     <AnswersProvider>
-      <Layout>
+      <Layout title="Le quiz du numérique responsable - Quiz">
         <SliderQuizz questions={questions} />
       </Layout>
     </AnswersProvider>

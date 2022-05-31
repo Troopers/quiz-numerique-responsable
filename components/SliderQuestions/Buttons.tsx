@@ -51,19 +51,12 @@ const Buttons: FC<ButtonsProps> = ({
 
   return (
     <>
-      <Flex justify="space-between" w="100%">
-        <Button
-          colorScheme="green"
-          color="green.900"
-          size="md"
-          borderRadius={50}
-          onClick={prevQuestion}
-          leftIcon={isFirstQuestion ? <ArrowBackIcon /> : <ArrowUpIcon />}
-          variant="outline"
-        >
-          {isFirstQuestion ? "Retour" : "Précédent"}
-        </Button>
-
+      <Flex
+        justify="space-between"
+        w="100%"
+        direction="row-reverse"
+        as="footer"
+      >
         {isLastQuestion ? (
           <Button
             colorScheme="green"
@@ -88,6 +81,18 @@ const Buttons: FC<ButtonsProps> = ({
             Suivant
           </Button>
         )}
+
+        <Button
+          colorScheme="green"
+          color="green.900"
+          size="md"
+          borderRadius={50}
+          onClick={prevQuestion}
+          leftIcon={isFirstQuestion ? <ArrowBackIcon /> : <ArrowUpIcon />}
+          variant="outline"
+        >
+          {isFirstQuestion ? "Retour" : "Précédent"}
+        </Button>
       </Flex>
     </>
   );
