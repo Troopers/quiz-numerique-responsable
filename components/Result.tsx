@@ -17,14 +17,14 @@ export const Result: FC<ResultProps> = ({
   questionNumber = 10,
 }) => {
   const toast = useToast();
-  const validationScore: number = 80;
+  const validationScore: number = 60;
   const percentScore = (score / questionNumber) * 100;
   const isQuizzValidated = percentScore >= validationScore;
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
-      ? "Copie ton identifiant et rends-toi vendredi soir sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
-      : "Rends-toi sur le marché de l’impact pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable.",
+      ? "Garde précieusement ton identifiant et rendez-vous à 16h vendredi sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
+      : "Rends-toi sur le Marché de l’impact (au village du Web2day2022)  pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable !",
     shareMyResult: `#QuizNumeriqueResponsable #Web2Day2022
     Mon score : ${score}/${questionNumber}
     Toi aussi tente de gagner une corbeille de fruits avec Graines d'ici et Troopers !
