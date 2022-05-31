@@ -1,5 +1,5 @@
 import { LinkIcon } from "@chakra-ui/icons";
-import { Box, Button, Heading, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Text, useToast } from "@chakra-ui/react";
 import Router from "next/router";
 import { FC } from "react";
 import { CenterBlock } from "./Core/CenterBlock";
@@ -19,23 +19,28 @@ export const Result: FC<ResultProps> = ({
   const toast = useToast();
   const validationScore: number = 80;
   const percentScore = (score / questionNumber) * 100;
-  const isQuizzValidated = percentScore > validationScore;
+  const isQuizzValidated = percentScore >= validationScore;
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
       ? "Et rends toi vendredi soir sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
       : "Rends toi sur le marché de l’impact pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable.",
+    shareMyResult: `#QuizNumeriqueResponsable #Web2Day2022
+    Mon score : ${score}/${questionNumber}
+    Toi aussi tente de gagner une corbeille de fruits avec Graines d'ici et Troopers !
+    https://quiz.troopers.agency/`,
   };
 
-  const handleCopy = () => {
+  const handleCopy = (title: string, textToCopy: string) => {
     if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
       toast({
-        title: "Identifiant copié",
+        title,
         status: "success",
         duration: 1000,
         isClosable: true,
+        position: "top",
       });
-      return navigator.clipboard.writeText(code);
+      return navigator.clipboard.writeText(textToCopy);
     }
     return Promise.reject("The Clipboard API is not available.");
   };
@@ -60,13 +65,13 @@ export const Result: FC<ResultProps> = ({
               gap={5}
               flexProps={{ paddingTop: 4, paddingBottom: 4 }}
             >
-              <Text>Copie ton identifiant</Text>
+              <Text>Identifiant : {code}</Text>
               <Button
                 leftIcon={<LinkIcon />}
                 variant="outline"
-                onClick={handleCopy}
+                onClick={() => handleCopy("Identifiant copié", code)}
               >
-                {code}
+                Copie ton identifiant
               </Button>
             </CenterBlock>
           )}
@@ -74,16 +79,35 @@ export const Result: FC<ResultProps> = ({
         <Text fontWeight="bold" textAlign="center">
           {textsDisplayed.details}
         </Text>
-        <Button
-          colorScheme="green"
-          bg="green.900"
-          size="lg"
-          borderRadius={50}
-          onClick={() => Router.push("/")}
-          py={5}
-        >
-          Recommencer
-        </Button>
+        <Flex width="100%" justify="space-evenly">
+          {!isQuizzValidated ? (
+            <Button
+              colorScheme="green"
+              color="green.900"
+              size="md"
+              borderRadius={50}
+              onClick={() => Router.push("/")}
+              py={5}
+              variant="outline"
+            >
+              Recommencer
+            </Button>
+          ) : (
+            <></>
+          )}
+          <Button
+            colorScheme="green"
+            bg="green.900"
+            size="md"
+            borderRadius={50}
+            onClick={() =>
+              handleCopy("Score copié", textsDisplayed.shareMyResult)
+            }
+            py={5}
+          >
+            Partager mon score
+          </Button>
+        </Flex>
       </CenterBlock>
     </Box>
   );

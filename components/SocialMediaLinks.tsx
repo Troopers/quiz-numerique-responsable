@@ -1,7 +1,9 @@
 import { Box, Flex, Link } from "@chakra-ui/react";
-import { FC } from "react";
+import { FC, ReactElement } from "react";
+import { FacebookIcon } from "./Icons/Facebook";
 import { LinkedInIcon } from "./Icons/LinkedIn";
 import { TwitterIcon } from "./Icons/Twitter";
+import { WebsiteIcon } from "./Icons/Website";
 
 interface SocialMediaLinksProps {
   variant: "grainesdici" | "troopers";
@@ -9,32 +11,35 @@ interface SocialMediaLinksProps {
 
 const mediaList: {
   [key: string]: {
-    [key: string]: {
-      name: string;
-      link: string;
-    };
-  };
+    name: string;
+    link: string;
+    icon: ReactElement;
+  }[];
 } = {
-  troopers: {
-    linkedIn: {
+  troopers: [
+    {
       name: "Troopers",
       link: "https://fr.linkedin.com/company/troopers-agency",
+      icon: <LinkedInIcon />,
     },
-    twitter: {
+    {
       name: "@Troopersagency",
       link: "https://twitter.com/troopersagency",
+      icon: <TwitterIcon />,
     },
-  },
-  grainesdici: {
-    linkedIn: {
-      name: "Graines d'ici",
-      link: "https://fr.linkedin.com/company/graines-d-ici",
-    },
-    twitter: {
+  ],
+  grainesdici: [
+    {
       name: "@grainesdici",
-      link: "https://twitter.com/grainesdici",
+      link: "https://www.facebook.com/grainesdici/",
+      icon: <FacebookIcon />,
     },
-  },
+    {
+      name: "grainesdici.fr",
+      link: "https://www.grainesdici.fr/",
+      icon: <WebsiteIcon />,
+    },
+  ],
 };
 
 export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
@@ -43,15 +48,15 @@ export const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ variant }) => {
     <Flex width="100%" flexDirection="row" justifyContent="center">
       <Flex flexDirection="column">
         <Box display="flex" alignItems="center">
-          <LinkedInIcon />
-          <Link marginLeft={2} href={media.linkedIn.link}>
-            {media.linkedIn.name}
+          {media[0].icon}
+          <Link marginLeft={2} href={media[0].link}>
+            {media[0].name}
           </Link>
         </Box>
         <Box display="flex" alignItems="center" marginTop="16px">
-          <TwitterIcon />
-          <Link marginLeft={2} href={media.twitter.link}>
-            {media.twitter.name}
+          {media[1].icon}
+          <Link marginLeft={2} href={media[1].link}>
+            {media[1].name}
           </Link>
         </Box>
       </Flex>
