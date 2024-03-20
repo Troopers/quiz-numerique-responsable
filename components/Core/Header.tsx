@@ -10,9 +10,6 @@ export const Header = () => {
         <Image src={TroopersLogo} alt="Troopers Logo" />
       </Box>
       <Spacer />
-      <Box>
-        <Image src={GrainesdiciLogo} alt="Grainesdici Logo" />
-      </Box>
     </Flex>
   );
 };

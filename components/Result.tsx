@@ -23,11 +23,11 @@ export const Result: FC<ResultProps> = ({
   const textsDisplayed = {
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
-      ? "Garde précieusement ton identifiant et rendez-vous à 16h vendredi sur les réseaux sociaux de Troopers pour savoir si tu as gagné !"
-      : "Rends-toi sur le Marché de l’impact (au village du Web2day2022)  pour obtenir les bonnes réponses et en savoir plus sur le numérique responsable !",
+      ? "Bravo tu es un⋅e champion⋅ne !"
+      : "Pas terrible coco !",
     shareMyResult: `#QuizNumeriqueResponsable #Web2Day2022
     Mon score : ${score}/${questionNumber}
-    Toi aussi tente de gagner une corbeille de fruits avec Graines d'ici et Troopers !
+    Toi aussi fais l test pour tester tes conniassance en numérique responsable !
     https://quiz.troopers.agency/`,
   };
 

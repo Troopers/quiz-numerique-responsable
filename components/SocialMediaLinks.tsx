@@ -6,7 +6,7 @@ import { TwitterIcon } from "./Icons/Twitter";
 import { WebsiteIcon } from "./Icons/Website";
 
 interface SocialMediaLinksProps {
-  variant: "grainesdici" | "troopers";
+  variant: "troopers";
 }
 
 const mediaList: {
@@ -29,20 +29,6 @@ const mediaList: {
       link: "https://twitter.com/troopersagency",
       icon: <TwitterIcon />,
       media: "Twitter",
-    },
-  ],
-  grainesdici: [
-    {
-      name: "@grainesdici",
-      link: "https://www.facebook.com/grainesdici/",
-      icon: <FacebookIcon />,
-      media: "Facebook",
-    },
-    {
-      name: "grainesdici.fr",
-      link: "https://www.grainesdici.fr/",
-      icon: <WebsiteIcon />,
-      media: "Site Web",
     },
   ],
 };

@@ -11,16 +11,16 @@ const Home: NextPage = () => {
         Le quiz du numérique <UnderlineWord>responsable</UnderlineWord>
       </Heading>
 
-      <Text align="center">
-        Si tu as 60% de bonnes réponses ou plus, tu pourras peut être gagner
-        <Text as="strong" ml={1}>
-          une corbeille de fruits de 5 kg avec Graines d&rsquo;ici !*
-        </Text>
-      </Text>
-      <Text align="center" fontSize="xs">
-        *Jeu valable du mercredi 1<sup>er</sup> 10h au vendredi 3 juin 14h, lot
-        uniquement disponible sur le bassin nantais.
-      </Text>
+      {/*<Text align="center">*/}
+      {/*  Si tu as 60% de bonnes réponses ou plus, tu pourras peut être gagner*/}
+      {/*  <Text as="strong" ml={1}>*/}
+      {/*    une corbeille de fruits de 5 kg avec Graines d&rsquo;ici !**/}
+      {/*  </Text>*/}
+      {/*</Text>*/}
+      {/*<Text align="center" fontSize="xs">*/}
+      {/*  *Jeu valable du mercredi 1<sup>er</sup> 10h au vendredi 3 juin 14h, lot*/}
+      {/*  uniquement disponible sur le bassin nantais.*/}
+      {/*</Text>*/}
       <Box>
         <Text align="center" mb={4} aria-label="Durée : 5 minutes">
           ⌛ 5 minutes

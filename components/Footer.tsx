@@ -14,7 +14,6 @@ export const Footer: FC<FooterProps> = () => {
       alignItems="center"
       bg="green.50"
     >
-      <SocialMediaLinks variant="grainesdici" />
       <SocialMediaLinks variant="troopers" />
     </Container>
   );
