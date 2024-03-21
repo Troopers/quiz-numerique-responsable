@@ -24,11 +24,11 @@ export const Result: FC<ResultProps> = ({
     header: isQuizzValidated ? "Bravo" : "Oups",
     details: isQuizzValidated
       ? "Bravo tu es un⋅e champion⋅ne !"
-      : "Pas terrible coco !",
-    shareMyResult: `#QuizNumeriqueResponsable #Web2Day2022
+      : "N'hésite pas à relire nos posts #TroopersNR pour en apprendre plus sur le numérique responsable.",
+    shareMyResult: `#QuizNumeriqueResponsable
     Mon score : ${score}/${questionNumber}
-    Toi aussi fais l test pour tester tes conniassance en numérique responsable !
-    https://quiz.troopers.agency/`,
+    Toi aussi fais le test pour tester tes connaissances en numérique responsable !
+    https://quizz.troopers.agency/`,
   };
 
   const handleCopy = (title: string, textToCopy: string) => {

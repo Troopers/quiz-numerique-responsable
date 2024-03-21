@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Text } from "@chakra-ui/react";
+import {Box, Button, Heading, Spacer, Flex, Text} from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Router from "next/router";
 import { Layout } from "../components/Core/Layout";
@@ -7,10 +7,13 @@ import { UnderlineWord } from "../components/Core/UnderlineWord";
 const Home: NextPage = () => {
   return (
     <Layout title="Le quiz du numérique responsable - Accueil">
+
+      <Spacer />
       <Heading as="h1" size="3xl" textAlign="center">
         Le quiz du numérique <UnderlineWord>responsable</UnderlineWord>
       </Heading>
 
+      <Spacer />
       {/*<Text align="center">*/}
       {/*  Si tu as 60% de bonnes réponses ou plus, tu pourras peut être gagner*/}
       {/*  <Text as="strong" ml={1}>*/}
